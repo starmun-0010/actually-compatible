@@ -4,6 +4,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
+import xyz.starmun.actuallycompatible.config.ActuallyCompatibleConfig;
 
 /*
 Increases buffer for multiplayer server list
@@ -12,6 +13,6 @@ Increases buffer for multiplayer server list
 public class PacketBufferEncoderMixin {
 	@ModifyConstant(method = "writeUtf(Ljava/lang/String;)Lnet/minecraft/network/FriendlyByteBuf;",constant = @Constant(intValue = 32767))
 	private int  getMaxEncodePacketSize(int old) {
-		return 100000;
+		return ActuallyCompatibleConfig.newPacketBufferSize.get();
 	}
 }
