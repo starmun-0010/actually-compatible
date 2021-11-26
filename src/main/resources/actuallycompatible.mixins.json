@@ -4,6 +4,9 @@
   "package": "xyz.starmun.actuallycompatible.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "FMLStatusPingMixin",
+    "PacketBufferDecoderMixin",
+    "PacketBufferEncoderMixin"
   ],
   "client": [
   ],
