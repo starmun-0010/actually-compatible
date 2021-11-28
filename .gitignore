@@ -31,5 +31,6 @@ bin/
 # fabric
 
 run/
+mcmodsrepo/
 /logs/debug.log
 /logs/latest.log
