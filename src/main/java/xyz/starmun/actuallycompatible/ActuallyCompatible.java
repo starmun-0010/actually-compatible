@@ -13,6 +13,6 @@ public class ActuallyCompatible {
     public static final String MOD_ID = "actuallycompatible";
     public static final Logger LOGGER = LogManager.getLogger();
     public ActuallyCompatible(){
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ActuallyCompatibleConfig.SPEC, "actuallycompatible-common.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ActuallyCompatibleConfig.SPEC, MOD_ID+"-common.toml");
     }
 }
