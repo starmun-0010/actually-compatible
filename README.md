@@ -22,6 +22,3 @@
 <p style="font-size: 24px; color: #008080; font-weight: bold;">Compatibility</p>
 <p><span style="font-size: 14px;">The same fix is being used in my modpack <a style="font-size: 18px; color: teal; font-weight: bold;" href="https://www.curseforge.com/minecraft/modpacks/starpack-titan-mc1-16">Starpack Titan</a> with <span style="color: orange;"> 600+</span> mods and it gives perfectly accurate checks. </span><br /> <span style="font-size: 14px;">If you discover an issue, please report from the issues tab above.</span></p>
 <p>&nbsp;</p>
-<p style="font-size: 24px; color: #008080; font-weight: bold;">Distribution</p>
-<p><span style="font-size: 14px;">Feel free to use this in your modpack.&nbsp;</span><br /><span style="font-size: 14px;">Any form of distribution should either be via this CurseForge project or should include a link to this description page.</span></p>
-<p>&nbsp;</p>
