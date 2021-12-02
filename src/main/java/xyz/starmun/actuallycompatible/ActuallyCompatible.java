@@ -14,5 +14,5 @@ public class ActuallyCompatible {
     public static final Logger LOGGER = LogManager.getLogger();
     public ActuallyCompatible(){
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ActuallyCompatibleConfig.SPEC, MOD_ID+"-common.toml");
-    }
+   }
 }

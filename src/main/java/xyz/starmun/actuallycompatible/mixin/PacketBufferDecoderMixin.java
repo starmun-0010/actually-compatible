@@ -11,7 +11,7 @@ Increases buffer for multiplayer server list
  */
 @Mixin(ClientboundStatusResponsePacket.class)
 public class PacketBufferDecoderMixin {
-	@ModifyConstant(method = "read", constant = @Constant(intValue = 32767))
+	@ModifyConstant(method = "<init>(Lnet/minecraft/network/FriendlyByteBuf;)V", constant = @Constant(intValue = 32767))
 	private int getMaxDecodePacketSize(int old) {
 		return ActuallyCompatibleConfig.newPacketBufferSize.get();
 	}
