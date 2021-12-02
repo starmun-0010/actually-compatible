@@ -11,7 +11,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import xyz.starmun.actuallycompatible.ActuallyCompatible;
 import xyz.starmun.actuallycompatible.contracts.IFMLStatPingExtensions;
 import java.util.Map;
 
@@ -22,7 +21,7 @@ public class ServerStatusPingMixin implements IFMLStatPingExtensions {
 
     private final static int MOD_TRUNCATE_LIMIT=Integer.MAX_VALUE;
 
-    @Shadow public transient Map<ResourceLocation, Pair<String, Boolean>> channels;
+    @Shadow private transient Map<ResourceLocation, Pair<String, Boolean>> channels;
 
     @Shadow private transient Map<String, String> mods;
 
@@ -50,13 +49,6 @@ public class ServerStatusPingMixin implements IFMLStatPingExtensions {
 
             JsonObject obj = new JsonObject();
             JsonArray channels = new JsonArray();
-            boolean truncated = ((IFMLStatPingExtensions)forgeData).getChannels().size() > CHANNEL_TRUNCATE_LIMIT || ((IFMLStatPingExtensions)forgeData).getMods().size() > MOD_TRUNCATE_LIMIT;
-            if (truncated && !warnedAboutTruncation)
-            {
-                warnedAboutTruncation = true;
-                ActuallyCompatible.LOGGER.warn("Heuristically truncating mod and/or network channel list in server status ping packet. Compatibility report " +
-                        "in the multiplayer screen may be inaccurate.");
-            }
 
             ((IFMLStatPingExtensions)forgeData).getChannels().entrySet().stream().limit(CHANNEL_TRUNCATE_LIMIT).forEach(entry -> {
                 ResourceLocation namespace = entry.getKey();
@@ -81,7 +73,7 @@ public class ServerStatusPingMixin implements IFMLStatPingExtensions {
             });
             obj.add("mods", modTestValues);
             obj.addProperty("fmlNetworkVersion", ((IFMLStatPingExtensions)forgeData).getFMLNetworkVer());
-            obj.addProperty("truncated", truncated);
+            obj.addProperty("truncated", false);
             cir.setReturnValue(obj);
         }
     }
