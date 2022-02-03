@@ -10,6 +10,7 @@
     "PacketBufferEncoderMixin"
   ],
   "client": [
+    "ModContainerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
