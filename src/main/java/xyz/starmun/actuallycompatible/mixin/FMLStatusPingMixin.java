@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import xyz.starmun.actuallycompatible.config.ActuallyCompatibleConfig;
 import xyz.starmun.actuallycompatible.contracts.IFMLStatPingExtensions;
 import java.util.Map;
 
@@ -63,7 +64,9 @@ public class FMLStatusPingMixin implements IFMLStatPingExtensions {
             obj.add("channels", channels);
 
             JsonArray modTestValues = new JsonArray();
-            ((IFMLStatPingExtensions)forgeData).getMods().entrySet().stream().limit(MOD_TRUNCATE_LIMIT).forEach(entry -> {
+            ((IFMLStatPingExtensions)forgeData).getMods().entrySet().stream()
+                    .filter(entry -> !ActuallyCompatibleConfig.serverIgnoredMods.get().contains(entry.getKey()))
+                    .limit(MOD_TRUNCATE_LIMIT).forEach(entry -> {
                 String modId = entry.getKey();
                 String value = entry.getValue();
                 JsonObject mi = new JsonObject();
